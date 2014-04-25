@@ -8,7 +8,6 @@ module.exports = function(grunt) {
   require('load-grunt-tasks')(grunt);
 
   grunt.registerTask('build' , [
-    'copy:html',
     'copy:js',
     'copy:public',
     'copy:components',
@@ -45,19 +44,20 @@ module.exports = function(grunt) {
       build: {
         options: {
           version: '0.9.2',
-          build_dir: './build', // Where the build version of my node-webkit app is saved
+          build_dir: './build/', // Where the build version of my node-webkit app is saved
           mac_icns: './icon.png', // Path to the Mac icon file
           mac: buildPlatforms.mac,
           win: buildPlatforms.win,
           linux32: buildPlatforms.linux32,
           linux64: buildPlatforms.linux64
         },
-        src: ['./build/app/**/*', './node_modules/**', '!./node_modules/grunt*/**', './package.json' ] // Your node-webkit app './**/*'
+
+        src: ['./index.html', './build/app/**/*', './node_modules/**', '!./node_modules/grunt*/**', './package.json' ] // Your node-webkit app './**/*'
       },
       dist: {
         options: {
           version: '0.9.2',
-          build_dir: './build', // Where the build version of my node-webkit app is saved
+          build_dir: './build/', // Where the build version of my node-webkit app is saved
           embed_nw: false, // Don't embed the .nw package in the binary
           keep_nw: true,
           mac_icns: './icon.png', // Path to the Mac icon file
@@ -128,11 +128,6 @@ module.exports = function(grunt) {
             flatten: true
           }
         ]
-      },
-      html: {
-        expand: true,
-        src: './app/index.html',
-        dest: './build'
       },
       js: {
         expand: true,
@@ -223,8 +218,7 @@ module.exports = function(grunt) {
       server: {
         options: {
           port: 3001,
-          hostname: '*',
-          base: './build/app'
+          hostname: '*'
         }
       }
     }
