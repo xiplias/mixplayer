@@ -1,3 +1,5 @@
+// This file is based on from popcornapp
+
 module.exports = function(grunt) {
   "use strict";
 
@@ -8,11 +10,14 @@ module.exports = function(grunt) {
   grunt.registerTask('build' , [
     'copy:html',
     'copy:js',
+    'copy:public',
+    'copy:components',
     'react',
     'less'
   ]);
 
   grunt.registerTask('dev' , [
+    'build',
     'connect',
     'watch'
   ]);
@@ -133,6 +138,16 @@ module.exports = function(grunt) {
         expand: true,
         src: './app/js/**/*.js',
         dest: './build'
+      },
+      public: {
+        expand: true,
+        src: './app/public/**/*',
+        dest: './build'
+      },
+      components: {
+        expand: true,
+        src: './app/components/**/*',
+        dest: './build'
       }
     },
 
@@ -166,7 +181,7 @@ module.exports = function(grunt) {
         }
       },
       styles: {
-        files: './app/less/**/*.less',
+        files: './app/styles/**/*.less',
         tasks: ['less'],
         options: {
           livereload: true,
@@ -175,6 +190,20 @@ module.exports = function(grunt) {
       html: {
         files: './app/index.html',
         tasks: ['copy:html'],
+        options: {
+          livereload: true,
+        }
+      },
+      public: {
+        files: './app/public/**/*',
+        tasks: ['copy:public'],
+        options: {
+          livereload: true,
+        }
+      },
+      components: {
+        files: './app/components/**/*',
+        tasks: ['copy:components'],
         options: {
           livereload: true,
         }
