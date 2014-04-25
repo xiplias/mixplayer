@@ -1,0 +1,8 @@
+node_modules/
+build/
+pids
+logs
+results
+npm-debug.log
+app.nw
+.DS_Store
