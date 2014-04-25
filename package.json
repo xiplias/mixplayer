@@ -1,0 +1,34 @@
+{
+  "name": "Mixplayer",
+  "homepage": "https://github.com/xiplias/mixplayer",
+  "bugs": "https://github.com/xiplias/mixplayer/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xiplias/mixplayer.git"
+  },
+  "license": "GPL-3.0",
+  "main": "app://host/build/app/index.html",
+  "version": "0.0.1",
+  "window": {
+    "title": "Mixplayer",
+    "icon": "images/icon.png",
+    "toolbar": true,
+    "frame": true,
+    "width": 962,
+    "height": 600,
+    "min_width": 962,
+    "min_height": 600,
+    "resizable": true
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "0.4.4",
+    "grunt-contrib-connect": "^0.7.1",
+    "grunt-contrib-copy": "0.5.0",
+    "grunt-contrib-less": "^0.11.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-node-webkit-builder": "0.1.x",
+    "grunt-react": "^0.8.2",
+    "load-grunt-tasks": "0.4.0"
+  }
+}
