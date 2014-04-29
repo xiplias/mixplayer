@@ -45,14 +45,14 @@ module.exports = function(grunt) {
         options: {
           version: '0.9.2',
           build_dir: './build/', // Where the build version of my node-webkit app is saved
-          mac_icns: './icon.png', // Path to the Mac icon file
+          mac_icns: 'build/app/public/images/icon3.icns', // Path to the Mac icon file
           mac: buildPlatforms.mac,
           win: buildPlatforms.win,
           linux32: buildPlatforms.linux32,
           linux64: buildPlatforms.linux64
         },
 
-        src: ['./index.html', './build/app/**/*', './node_modules/**', '!./node_modules/grunt*/**', './package.json' ] // Your node-webkit app './**/*'
+        src: ['./index.html', './build/app/**/*', './node_modules/**', '!./node_modules/*grunt*/**', './package.json' ] // Your node-webkit app './**/*'
       },
       dist: {
         options: {
@@ -60,13 +60,13 @@ module.exports = function(grunt) {
           build_dir: './build/', // Where the build version of my node-webkit app is saved
           embed_nw: false, // Don't embed the .nw package in the binary
           keep_nw: true,
-          mac_icns: './icon.png', // Path to the Mac icon file
+          mac_icns: 'build/app/public/images/icon3.icns', // Path to the Mac icon file
           mac: buildPlatforms.mac,
           win: buildPlatforms.win,
           linux32: buildPlatforms.linux32,
           linux64: buildPlatforms.linux64
         },
-        src: ['./build/app/**/*', './node_modules/**', '!./node_modules/grunt*/**', './package.json' ] // Your node-webkit app './**/*'
+        src: ['./build/app/**/*', 'node_modules/cheerio', 'node_modules/request', './package.json' ] // Your node-webkit app './**/*'
       }
     },
 
@@ -134,6 +134,11 @@ module.exports = function(grunt) {
         src: './app/js/**/*.js',
         dest: './build'
       },
+      jsx: {
+        expand: true,
+        src: './app/jsx/**/*.jsx',
+        dest: './build'
+      },
       public: {
         expand: true,
         src: './app/public/**/*',
@@ -161,16 +166,16 @@ module.exports = function(grunt) {
     },
 
     watch: {
-      jsx: {
-        files: './app/js/**/*.jsx',
-        tasks: ['react'],
+      js: {
+        files: './app/js/**/*.js',
+        tasks: ['copy:js'],
         options: {
           livereload: true,
         }
       },
-      js: {
-        files: './app/js/**/*.jsx',
-        tasks: ['copy:js'],
+      jsx: {
+        files: './app/jsx/**/*.jsx',
+        tasks: ['react'],
         options: {
           livereload: true,
         }
@@ -206,8 +211,8 @@ module.exports = function(grunt) {
 
     },
 
-    less: {                            
-      dist: {                           
+    less: {
+      dist: {
         files: {
           './build/app/styles/app.css': './app/styles/app.less'
         }
@@ -244,4 +249,4 @@ var parseBuildPlatforms = function(argumentPlatform) {
   };
 
   return buildPlatforms;
-}
+};

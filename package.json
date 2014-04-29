@@ -11,8 +11,8 @@
   "version": "0.0.1",
   "window": {
     "title": "Mixplayer",
-    "icon": "images/icon.png",
-    "toolbar": false,
+    "icon": "build/app/public/images/icon.icns",
+    "toolbar": true,
     "frame": true,
     "width": 680,
     "height": 200,
@@ -20,7 +20,10 @@
     "min_height": 600,
     "resizable": false
   },
-  "dependencies": {},
+  "dependencies": {
+    "cheerio": "^0.15.0",
+    "request": "^2.34.0"
+  },
   "devDependencies": {
     "grunt": "0.4.4",
     "grunt-contrib-connect": "^0.7.1",

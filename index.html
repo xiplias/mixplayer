@@ -4,33 +4,14 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="/build/app/styles/app.css">
     <link rel="stylesheet" type="text/css" href="/build/app/components/open-sans-fontface/open-sans.css">
+    <script src="/build/app/js/scraper.js"></script>
+    <script src="/build/app/components/soundmanager2/index.js"></script>
+    <script src="/build/app/components/react/react.js"></script>
   </head>
   <body>
-    <div class="player">
-      <div class="info">
-        <div class="info-title">BBC Radio 1 Residency 2014-04-25</div>
-        <div class="info-artist">Tiesto & Danny Avila</div>
-        <div class="info-track">0:00 - 1:20 Watermat - Bullit [SPINNIN' DEEP]</div>
-
-      </div>
-      <div class="progress">
-        <div class="progress-background"></div>
-        <div class="progress-bar"></div>
-        <div class="progress-text progress-current">1:28</div>
-        <div class="progress-text progress-total">1:25:34</div>
-      </div>
-      <div class="controller">
-        <div class="controls"> 
-            <svg class="icon icon-first" viewBox="0 0 32 32"><use xlink:href="/build/app/public/svg/sprites.svg#icon-previous"></use></svg>
-            <svg class="icon icon-plat" viewBox="0 0 32 32"><use xlink:href="/build/app/public/svg/sprites.svg#icon-play"></use></svg>
-            <svg class="icon icon-last" viewBox="0 0 32 32"><use xlink:href="/build/app/public/svg/sprites.svg#icon-next"></use></svg>
-            <div class="volume right">
-              <svg class="icon icon-volume-off" viewBox="0 0 32 32"><use xlink:href="/build/app/public/svg/sprites.svg#icon-volume-off"></use></svg>
-            </div>
-            <div class="clear">
-
-        </div>
-      </div>
+    <div id="mixplayer">
     </div>
+    <script src="/build/app/jsx/player.js"></script>
+    <script src="/build/app/js/app.js"></script>
   </body>
 </html>
