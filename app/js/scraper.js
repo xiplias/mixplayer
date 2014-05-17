@@ -1,9 +1,9 @@
 window.Scraper = window.Scraper || {};
 
-Scraper.fetchMix = function (url, callback) {
-  var request = require('request');
-  var cheerio = require('cheerio');
+var request = require('request');
+var cheerio = require('cheerio');
 
+Scraper.fetchMix = function (url, callback) {
   console.log("requesting", url);
 
   request(url, function (error, response, body) {
@@ -42,6 +42,35 @@ Scraper.fetchMix = function (url, callback) {
 
       data.media.push({
         url: url
+      });
+    });
+
+    callback(null, data);
+  });
+};
+
+Scraper.fetchSearch = function (query, callback) {
+  request.post({
+    url: 'http://www.1001tracklists.com/search/result.php',
+    method: 'POST',
+    form: {
+      main_search: query,
+      search_selection: 1
+    }
+  }, function (error, response, body) {
+    var $ = cheerio.load(body);
+
+    var entries = $("#middleDiv td.tl");
+
+
+    var data = [];
+
+    entries.each(function (index, el) {
+      data.push({
+        title: $(el).find(".tlLink a").text(),
+        url: "http://www.1001tracklists.com" + $(el).find(".tlLink a").attr("href"),
+        popularity: $(el).find("div.tlViewCount").text().trim(),
+        hasSoundCloud: $(el).find('.sprite-soundcloud_overlay').length === 1
       });
     });
 

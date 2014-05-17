@@ -22,10 +22,13 @@ var MixPlayer = React.createClass({
 
       that.setState({mixes: mixes});
       //that.playSong(mix);
+
+      return mix;
     });
   },
-  addSong: function () {
-
+  addSong: function (url) {
+    console.log("addmjix", url);
+    var mix = this.fetch(url);
   },
   playSong: function (mix) {
     console.log(mix);
@@ -99,7 +102,7 @@ var MixPlayer = React.createClass({
           <Playlist mixes={this.state.mixes} onDoubleClick={this.playSong} />
         </div>
         <div className="discoverWindow left">
-          <Discover onAddSong={this.addSong} onPlaySong={this.playSong} />
+          <Discover onAddMix={this.addSong} onPlayMix={this.playSong} />
         </div>
         <div className="clear"></div>
       </div>
