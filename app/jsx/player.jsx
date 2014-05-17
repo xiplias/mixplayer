@@ -60,8 +60,10 @@ Progress = React.createClass({
       <div className="progress">
         <div className="progress-background"></div>
         <div className="progress-bar" style={{width : this.progressCalculate(sound.position, sound.duration) + "%"}}></div>
-        <div className="progress-text progress-current left">{this.toTime(sound.position)}</div>
-        <div className="progress-text progress-total right">{this.toTime(sound.duration)}</div>
+        <div className="progress-text">
+          <div className="progress-current left">{this.toTime(sound.position)}</div>
+          <div className="progress-total right">{this.toTime(sound.duration)}</div>
+        </div>
         <div className="clear"></div>
       </div>
     );
