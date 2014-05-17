@@ -94,6 +94,12 @@ var MixPlayer = React.createClass({
       }
     });
   },
+  setVolume: function () {
+    soundManager.mute();
+    this.setState({
+      mute: !this.state.mute
+    });
+  },
   render: function () {
     return (
       <div className="mixplayerWindow">
@@ -101,7 +107,7 @@ var MixPlayer = React.createClass({
           <div>
             <Info mix={this.state.currentMix} />
             <Progress sound={this.state.playing}/>
-            <Controls state={this.state.state} onStateChange={this.stateChange}/>
+            <Controls state={this.state.state} onStateChange={this.stateChange} onVolumeChange={this.setVolume} mute={this.state.mute} />
           </div>
           <Playlist mixes={this.state.mixes} onDoubleClick={this.playSong} />
         </div>

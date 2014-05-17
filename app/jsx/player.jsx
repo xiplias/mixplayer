@@ -8,18 +8,20 @@ Controls = React.createClass({
   },
   stateImage: function () {
     if (this.props.state == 'playing') {
-      return "/build/app/public/svg/pause.svg"
+      return "/build/app/public/svg/pause.svg";
     } else {
-      return "/build/app/public/svg/play.svg"
+      return "/build/app/public/svg/play.svg";
     }
   },
   render: function () {
     return (
       <div className="controls">
-        <img className="icon" src="/build/app/public/svg/previous.svg" />
-        <img onClick={this.play} className="icon" src={this.stateImage()} />
-        <img className="icon" src="/build/app/public/svg/next.svg" />
-        <Volume />
+        <div className="controlGroup left">
+          <img className="icon" src="/build/app/public/svg/previous.svg" />
+          <img onClick={this.play} className="icon" src={this.stateImage()} />
+          <img className="icon" src="/build/app/public/svg/next.svg" />
+        </div>
+        <Volume onVolumeChange={this.props.onVolumeChange} mute={this.props.mute} />
         <div className="clear"></div>
       </div>
     );
@@ -27,10 +29,18 @@ Controls = React.createClass({
 });
 
 Volume = React.createClass({
+  volumeIcon: function () {
+    console.log(this.props.mute);
+    return this.props.mute ? "/build/app/public/svg/volume-off.svg" : "/build/app/public/svg/volume-up.svg"
+  },
+  handleClick: function () {
+    console.log("change");
+    this.props.onVolumeChange();
+  },
   render: function () {
     return (
       <div className="volume right">
-        <img className="icon" src="/build/app/public/svg/volume-off.svg" />
+        <img className="icon" src={this.volumeIcon()} onClick={this.handleClick} />
       </div>
     )
   }
