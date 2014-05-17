@@ -4,7 +4,7 @@ Scraper.fetchMix = function (url, callback) {
   var request = require('request');
   var cheerio = require('cheerio');
 
-  console.log(url);
+  console.log("requesting", url);
 
   request(url, function (error, response, body) {
     console.log(body);

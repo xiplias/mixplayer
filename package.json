@@ -14,11 +14,11 @@
     "icon": "build/app/public/images/icon.icns",
     "toolbar": true,
     "frame": true,
-    "width": 680,
-    "height": 200,
+    "width": 1200,
+    "height": 400,
     "min_width": 962,
     "min_height": 600,
-    "resizable": false
+    "resizable": true
   },
   "dependencies": {
     "cheerio": "^0.15.0",
