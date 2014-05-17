@@ -7,3 +7,5 @@ results
 npm-debug.log
 app.nw
 .DS_Store
+.zedstate
+
