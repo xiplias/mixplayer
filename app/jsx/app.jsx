@@ -3,7 +3,13 @@ var request = require('request');
 
 var MixPlayer = React.createClass({
   getInitialState: function() {
-    return {mixes: {}, playing: {}, sound: null, currentMix: null};
+    return {
+      mixes: {},
+      playing: {},
+      sound: null,
+      currentMix: null,
+      mute: false
+    };
   },
   stateChange: function (state) {
     if (state == "playing") {
@@ -38,8 +44,6 @@ var MixPlayer = React.createClass({
     this.setState({currentMix: mix});
 
     this.findSoundCloud(mix, function (err, url) {
-
-
       var sound = soundManager.createSound({
         id: mix.title,
         url: url,

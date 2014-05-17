@@ -78,7 +78,6 @@ SearchItem = React.createClass({
     } else {
       return "searchItem lowkey";
     }
-
   },
   render: function () {
     var item = this.props.item;
