@@ -89,20 +89,19 @@ var MixPlayer = React.createClass({
   },
   render: function () {
     return (
-      <div>
+      <div className="mixplayerWindow">
         <div className="playerWindow left">
           <div>
             <Info mix={this.state.currentMix} />
             <Progress sound={this.state.playing}/>
             <Controls state={this.state.state} onStateChange={this.stateChange}/>
           </div>
-          <MixUrlForm onFetch={this.fetch} />
           <Playlist mixes={this.state.mixes} onDoubleClick={this.playSong} />
         </div>
         <div className="discoverWindow left">
           <Discover onAddSong={this.addSong} onPlaySong={this.playSong} />
         </div>
-        <div class="clear"></div>
+        <div className="clear"></div>
       </div>
     );
   }
