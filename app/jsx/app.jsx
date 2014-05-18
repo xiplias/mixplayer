@@ -3,15 +3,24 @@ var request = require('request');
 
 var MixPlayer = React.createClass({
   getInitialState: function() {
-    return {
+    var initState = {
       mixes: {},
       playing: {},
       sound: null,
       currentMix: null,
       mute: false
     };
+
+    if(localStorage.mixPlayerMixes) {
+      console.log("add stored mixes");
+      initState.mixes = JSON.parse(localStorage.mixPlayerMixes);
+    }
+
+    return initState;
   },
   stateChange: function (state) {
+    if (!this.state.sound) return;
+
     if (state == "playing") {
       this.state.sound.pause();
     } else {
@@ -26,19 +35,18 @@ var MixPlayer = React.createClass({
       var mixes = that.state.mixes;
       mixes[mix.title] = mix;
 
+      console.log("mixes", mixes);
+
       that.setState({mixes: mixes});
-      //that.playSong(mix);
+      localStorage.mixPlayerMixes = JSON.stringify(mixes);
 
       return mix;
     });
   },
   addSong: function (url) {
-    console.log("addmjix", url);
-    var mix = this.fetch(url);
+    this.fetch(url);
   },
   playSong: function (mix) {
-    console.log(mix);
-
     var that = this;
 
     this.setState({currentMix: mix});
@@ -81,7 +89,6 @@ var MixPlayer = React.createClass({
     });
   },
   findSoundCloud: function (mix, callback) {
-    console.log("findSoundcloud", mix);
     mix.media.forEach(function (source) {
       if (source.url.match(/soundcloud.com/) !== null) {
         var resolveUrl = "http://api.soundcloud.com/resolve.json?url=" + source.url + "&client_id=ccf4b730db624e5d43a9f8f69491b157";
