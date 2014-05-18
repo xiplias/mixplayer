@@ -7,7 +7,6 @@ Scraper.fetchMix = function (url, callback) {
   console.log("requesting", url);
 
   request(url, function (error, response, body) {
-    console.log(body);
     var $ = cheerio.load(body),
         titleString = $('.sideTop').first().text().split(/ (@|-) /);
 
