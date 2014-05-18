@@ -94,7 +94,14 @@ var MixPlayer = React.createClass({
     });
   },
   setVolume: function () {
-    soundManager.mute();
+    var mute = !this.state.mute;
+
+    if (mute) {
+      soundManager.mute();
+    } else {
+      soundManager.unmute();
+    }
+
     this.setState({
       mute: !this.state.mute
     });
