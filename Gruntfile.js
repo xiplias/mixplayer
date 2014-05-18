@@ -45,7 +45,7 @@ module.exports = function(grunt) {
         options: {
           version: '0.9.2',
           build_dir: './build/', // Where the build version of my node-webkit app is saved
-          mac_icns: './build/app/public/images/icon.icns', // Path to the Mac icon file
+          mac_icns: './icon.icns', // Path to the Mac icon file
           mac: buildPlatforms.mac,
           win: buildPlatforms.win,
           linux32: buildPlatforms.linux32,
@@ -60,7 +60,7 @@ module.exports = function(grunt) {
           build_dir: './build/', // Where the build version of my node-webkit app is saved
           embed_nw: false, // Don't embed the .nw package in the binary
           keep_nw: true,
-          mac_icns: './build/app/public/images/icon.icns', // Path to the Mac icon file
+          mac_icns: './icon.icns', // Path to the Mac icon file
           mac: buildPlatforms.mac,
           win: buildPlatforms.win,
           linux32: buildPlatforms.linux32,
