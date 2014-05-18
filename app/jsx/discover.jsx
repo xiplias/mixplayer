@@ -25,7 +25,7 @@ Discover = React.createClass({
 
 MixUrlForm = React.createClass({
   getInitialState: function () {
-    return {url: "http://www.1001tracklists.com/tracklist/49409_steve-angello-third-party-bbc-radio-1-residency-2014-05-01.html"};
+    return {url: ""};
   },
   onChange: function(e) {
     this.setState({url: e.target.value});
