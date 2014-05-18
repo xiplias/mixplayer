@@ -34,15 +34,17 @@ MixUrlForm = React.createClass({
     e.preventDefault();
     //this.props.onAddMix(this.state.url);
 
-    var that = this;
+    if (this.state.url) {
+      var that = this;
 
-    Scraper.fetchSearch(this.state.url, function (err, data) {
-      that.props.onSearchData(data);
-    });
+      Scraper.fetchSearch(this.state.url, function (err, data) {
+        that.props.onSearchData(data);
+      });
+    }
   },
   render: function () {
     return (
-      <div className="playlistBar" style={{width: 450, margin: "0 auto"}}>
+      <div className="discoverSearch">
         <form onSubmit={this.handleSubmit}>
           <input onChange={this.onChange} value={this.state.url} style={{width: 350}}/>
           <input type="submit" />
@@ -70,7 +72,10 @@ SearchResults = React.createClass({
 
 SearchItem = React.createClass({
   addMix: function () {
-    this.props.onAddMix(this.props.item.url);
+    if (this.props.item.hasSoundCloud) {
+      console.log("add");
+      this.props.onAddMix(this.props.item.url);
+    }
   },
   classNames: function () {
     if (this.props.item.hasSoundCloud) {
@@ -86,7 +91,7 @@ SearchItem = React.createClass({
 
     return (
       <div className={this.classNames()} onDoubleClick={this.addMix}>
-        {item.title}
+        {item.title}&nbsp;
         <small>
           <a href={item.url} target="_blank">external</a>
           {item.hasSoundCloud}
