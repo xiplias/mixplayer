@@ -84,7 +84,6 @@ var MixPlayer = React.createClass({
     console.log("findSoundcloud", mix);
     mix.media.forEach(function (source) {
       if (source.url.match(/soundcloud.com/) !== null) {
-
         var resolveUrl = "http://api.soundcloud.com/resolve.json?url=" + source.url + "&client_id=ccf4b730db624e5d43a9f8f69491b157";
         request(resolveUrl, function (error, response, body) {
           var soundCloud = JSON.parse(body);
