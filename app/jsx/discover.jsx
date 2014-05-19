@@ -46,7 +46,7 @@ MixUrlForm = React.createClass({
     return (
       <div className="discoverSearch">
         <form onSubmit={this.handleSubmit}>
-          <input onChange={this.onChange} value={this.state.url} style={{width: 350}}/>
+          <input onChange={this.onChange} value={this.state.url} placeholder="Search mixes" pattern=".{4,}" required title="4 characters minimum" style={{width: 350}}/>
           <input type="submit" />
         </form>
       </div>

@@ -38,10 +38,23 @@ var MixPlayer = React.createClass({
       console.log("mixes", mixes);
 
       that.setState({mixes: mixes});
-      localStorage.mixPlayerMixes = JSON.stringify(mixes);
+
+      that.updateStorage(mixes);
 
       return mix;
     });
+  },
+  updateStorage: function (mixes) {
+    localStorage.mixPlayerMixes = JSON.stringify(mixes);
+  },
+  deleteSong: function (mix) {
+    var mixes = this.state.mixes;
+
+    delete mixes[mix.title];
+
+    this.setState({mixes: mixes});
+
+    this.updateStorage(mixes);
   },
   addSong: function (url) {
     this.fetch(url);
@@ -122,7 +135,7 @@ var MixPlayer = React.createClass({
             <Progress sound={this.state.playing}/>
             <Controls state={this.state.state} onStateChange={this.stateChange} onVolumeChange={this.setVolume} mute={this.state.mute} />
           </div>
-          <Playlist mixes={this.state.mixes} onDoubleClick={this.playSong} />
+          <Playlist mixes={this.state.mixes} onDoubleClick={this.playSong} onDelete={this.deleteSong} />
         </div>
         <div className="discoverWindow left">
           <Discover onAddMix={this.addSong} onPlayMix={this.playSong} />
