@@ -51,7 +51,7 @@ Progress = React.createClass({
     return Format(Math.round(position/1000) || 0);
   },
   progressCalculate: function (position, duration) {
-    return position/duration*100 + "%";
+    return (position/duration*100)/2 + "%";
   },
   render: function () {
     var sound = this.props.sound;
