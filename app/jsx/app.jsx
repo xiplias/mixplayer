@@ -18,9 +18,9 @@ var MixPlayer = React.createClass({
 
     return initState;
   },
-  stateChange: function (state) {
+  statePlayChange: function (state) {
     if (!this.state.sound) return;
-
+    console.log("state", state);    
     if (state == "playing") {
       this.state.sound.pause();
     } else {
@@ -64,10 +64,13 @@ var MixPlayer = React.createClass({
 
     this.setState({currentMix: mix});
 
+    //soundManager.stopAll();
+
     this.findSoundCloud(mix, function (err, url) {
       var sound = soundManager.createSound({
         id: mix.title,
         url: url,
+        autoPlay: true,
         whileplaying: function () {
           that.setState({
             playing: {
@@ -90,11 +93,17 @@ var MixPlayer = React.createClass({
           that.setState({
             state: 'playing'
           });
+        },
+        onsuspend: function () {
+          console.log("suspend");
+        },
+        whileloading: function () {
+          soundManager._writeDebug('sound '+this.id+' loading, '+this.bytesLoaded+' of '+this.bytesTotal);
+        },
+        onfinish: function() {
+          alert('The sound '+this.id+' finished playing.');
         }
       });
-
-      soundManager.stopAll();
-      sound.play();
 
       that.setState({
         sound: sound
@@ -133,7 +142,7 @@ var MixPlayer = React.createClass({
           <div>
             <Info mix={this.state.currentMix} />
             <Progress sound={this.state.playing}/>
-            <Controls state={this.state.state} onStateChange={this.stateChange} onVolumeChange={this.setVolume} mute={this.state.mute} />
+            <Controls state={this.state.state} onStateChange={this.statePlayChange} onVolumeChange={this.setVolume} mute={this.state.mute} />
           </div>
           <Playlist mixes={this.state.mixes} onDoubleClick={this.playSong} onDelete={this.deleteSong} />
         </div>
