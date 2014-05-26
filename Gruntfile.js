@@ -1,6 +1,7 @@
 // This file is based on from popcornapp
 
 module.exports = function(grunt) {
+
   "use strict";
 
   var buildPlatforms = parseBuildPlatforms(grunt.option('platforms'));

@@ -12,7 +12,7 @@
   "window": {
     "title": "Mixplayer",
     "icon": "icon.icns",
-    "toolbar": false,
+    "toolbar": true,
     "frame": true,
     "width": 1200,
     "height": 400,
@@ -32,6 +32,7 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-node-webkit-builder": "0.1.x",
     "grunt-react": "^0.8.2",
-    "load-grunt-tasks": "0.4.0"
+    "load-grunt-tasks": "0.4.0",
+    "grunt-shell": "^0.7.0"
   }
 }
