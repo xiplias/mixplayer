@@ -5,7 +5,7 @@ module.exports = function(grunt) {
   "use strict";
 
   var buildPlatforms = parseBuildPlatforms(grunt.option('platforms'));
-
+  var appName = "Mixplayer";
   require('load-grunt-tasks')(grunt);
 
   grunt.registerTask('build' , [
@@ -34,10 +34,17 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('dist', [
-    'default',
+    'build',
     'nodewebkit:dist',
     'copy:ffmpeg',
     'copy:package'
+  ]);
+
+  grunt.registerTask('prerelease', [
+    'bumpup:prerelease',
+    'dist',
+    'shell:compress_mac',
+    'github-release:prerelease'
   ]);
 
   grunt.initConfig({
@@ -227,7 +234,52 @@ module.exports = function(grunt) {
           hostname: '*'
         }
       }
-    }
+    },
+    shell: {
+      compress_mac: {
+          command: [
+                  'cd ./build/releases/'+ appName + '/mac/;../../../../yoursway-create-dmg/create-dmg --window-size 799 457 --volname "' + appName + ' Installer' +
+                  '" --app-drop-link 550 145 --icon "' + appName + '" 260 148 ' + appName + 'Installer.dmg ' + appName + '.app'
+          ].join('&&'),
+          options: {
+              stdout: true,
+              execOptions: {
+                  cwd: './'
+              }
+          }
+      },
+    },
+    "github-release": {
+      prerelease: {
+        options: {
+          repository: 'xiplias/mixplayer', // Path to repository
+          auth: {
+            user: 'xiplias',
+            password: 'oxsb46gt'
+          },
+          release: {
+            prerelease: true
+          }
+        },
+        files: {
+          src: ['./build/releases/Mixplayer/mac/MixplayerInstaller.dmg'] // Files that you want to attach to Release
+        }
+      },
+      release: {
+        options: {
+          repository: 'xiplias/mixplayer', // Path to repository
+          auth: {
+            user: 'xiplias',
+            password: 'oxsb46gt'
+          }
+        },
+        files: {
+          src: ['./build/releases/Mixplayer/mac/MixplayerInstaller.dmg'] // Files that you want to attach to Release
+        }
+      }
+
+    },
+    bumpup: 'package.json'
   });
 };
 

@@ -8,7 +8,7 @@
   },
   "license": "MIT",
   "main": "app://host/index.html",
-  "version": "0.0.2",
+  "version": "0.0.3-12",
   "window": {
     "title": "Mixplayer",
     "icon": "icon.icns",
@@ -17,22 +17,26 @@
     "width": 1200,
     "height": 400,
     "min_width": 962,
-    "min_height": 600,
+    "min_height": 400,
     "resizable": true
   },
   "dependencies": {
     "cheerio": "^0.15.0",
-    "request": "^2.34.0"
+    "request": "^2.34.0",
+    "node-webkit-mac-updater": "0.0.2",
+    "semver": "^2.3.0"
   },
   "devDependencies": {
     "grunt": "0.4.4",
+    "grunt-bumpup": "^0.5.2",
     "grunt-contrib-connect": "^0.7.1",
     "grunt-contrib-copy": "0.5.0",
     "grunt-contrib-less": "^0.11.0",
     "grunt-contrib-watch": "^0.6.1",
+    "grunt-github-releaser": "^0.1.16",
     "grunt-node-webkit-builder": "0.1.x",
     "grunt-react": "^0.8.2",
-    "load-grunt-tasks": "0.4.0",
-    "grunt-shell": "^0.7.0"
+    "grunt-shell": "^0.7.0",
+    "load-grunt-tasks": "0.4.0"
   }
 }
