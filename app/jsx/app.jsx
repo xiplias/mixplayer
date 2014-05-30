@@ -20,7 +20,7 @@ var MixPlayer = React.createClass({
   },
   statePlayChange: function (state) {
     if (!this.state.sound) return;
-    console.log("state", state);    
+    console.log("state", state);
     if (state == "playing") {
       this.state.sound.pause();
     } else {
@@ -137,21 +137,27 @@ var MixPlayer = React.createClass({
   },
   render: function () {
     return (
-      <div className="mixplayerWindow">
-        <div className="playerWindow left">
-          <div>
-            <Info mix={this.state.currentMix} />
-            <Progress sound={this.state.playing}/>
-            <Controls state={this.state.state} onStateChange={this.statePlayChange} onVolumeChange={this.setVolume} mute={this.state.mute} />
+      <div style={{height: "100%"}}>
+        <div className='playerWindow left'>
+          <div className="flexbox">
+            <div className='static'>
+              <Info mix={this.state.currentMix} />
+              <Progress sound={this.state.playing}/>
+              <Controls state={this.state.state} onStateChange={this.statePlayChange} onVolumeChange={this.setVolume} mute={this.state.mute} />
+            </div>
+            <div className='flex'>
+              <div className='flex-child'>
+                <Playlist mixes={this.state.mixes} onDoubleClick={this.playSong} onDelete={this.deleteSong} />
+              </div>
+            </div>
           </div>
-          <Playlist mixes={this.state.mixes} onDoubleClick={this.playSong} onDelete={this.deleteSong} />
         </div>
-        <div className="discoverWindow left">
+        <div className="discoverWindow right">
           <Discover onAddMix={this.addSong} onPlayMix={this.playSong} />
         </div>
         <div className="clear"></div>
       </div>
-    );
+    )
   }
 });
 

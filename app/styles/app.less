@@ -1,15 +1,39 @@
 @import "playlist";
+@import "discover";
 
 html, body {
-  background: #fafafa;
+  background: #fff;
   margin: 0;
   height: 100%;
   font-family: 'Open Sans';
 }
 
-.mixplayerWindow, #mixplayer {
-  width: 100%;
+#mixplayer {
   height: 100%;
+}
+
+.flexbox {
+  position:absolute;
+  width:50%;
+  height:100%;
+
+  display: flex;
+  flex-direction:column;
+}
+
+.flex {
+  flex:1;
+  overflow: scroll;
+}
+
+.flex-child {
+  height:100%;
+  width:100%;
+  display:block;
+}
+
+.static {
+  width:100%;
 }
 
 .right {
@@ -40,22 +64,10 @@ input {
   height: 100%;
 }
 
-.discover {
-  height: 100%;
-  border-left: 2px #b0b0b0 solid;
-  overflow: scroll;
-}
-
-.discoverSearch {
-  position: fixed;
-  top: 0;
-  width: 50%;
-  text-align: center;
-  padding: 7px;
-}
-
 .player {
-  height: 100%;
+  background:green;
+  width:100%;
+  height:5rem;
 }
 
 .info {
@@ -73,19 +85,8 @@ input {
   }
 }
 
-.playlistBar {
-  padding: 10px;
-}
-
-.playlistItem {
-  border-bottom: 1px #ccc solid;
-  background: #fcfcfc;
-  padding: 6px 20px;
-  cursor: pointer;
-}
-
 .progress {
-  width: 50%;
+  width: 100%;
   height: 30px;
 
   .progress-bar {
@@ -96,7 +97,7 @@ input {
 
   .progress-background {
     position: absolute;
-    width: 50%;
+    width: 100%;
     height: 30px;
     opacity: 0.5;
     background: #bdbdbd;
@@ -104,7 +105,7 @@ input {
 
   .progress-text {
     position: absolute;
-    width: 50%;
+    width: 100%;
     margin-top: 4px;
     font-weight: 400;
     letter-spacing: 1px;
@@ -123,7 +124,7 @@ input {
 }
 
 .controls {
-  background: #fff;
+  background: #e8eef2;
   width: 100%;
   height: 55px;
   border-bottom: 1px #ccc solid;
