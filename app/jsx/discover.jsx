@@ -45,6 +45,7 @@ MixUrlForm = React.createClass({
   render: function () {
     return (
       <div className="discoverSearch">
+        <div className="header">Search</div>
         <form onSubmit={this.handleSubmit}>
           <input onChange={this.onChange} value={this.state.url} placeholder="Search mixes" pattern=".{4,}" required title="4 characters minimum" style={{width: 350}}/>
           <input type="submit" />
@@ -79,9 +80,9 @@ SearchItem = React.createClass({
   },
   classNames: function () {
     if (this.props.item.hasSoundCloud) {
-      return "searchItem";
+      return "searchItem playlistItem";
     } else {
-      return "searchItem lowkey";
+      return "searchItem playlistItem lowkey";
     }
   },
   render: function () {

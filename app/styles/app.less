@@ -2,10 +2,12 @@
 @import "discover";
 
 html, body {
-  background: #fff;
+  background: #fffafb;
   margin: 0;
   height: 100%;
-  font-family: 'Open Sans';
+  letter-spacing: 1px;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, sans-serif;
+  -webkit-font-smoothing: subpixel-antialiased;
 }
 
 #mixplayer {
@@ -16,6 +18,7 @@ html, body {
   position:absolute;
   width:50%;
   height:100%;
+  background: #404d4f;
 
   display: flex;
   flex-direction:column;
@@ -65,69 +68,71 @@ input {
 }
 
 .player {
-  background:green;
   width:100%;
   height:5rem;
 }
 
 .info {
-  padding: 10px 20px;
+  min-height: 50px;
+  padding: 20px 20px;
+  color: #fefff5;
 
   .info-title {
-    font-weight: 600;
     font-size: 1.2em;
   }
 
   .info-artist {
-    font-weight: 600;
     font-size: 1.1em;
     padding-bottom: 3px;
+    color: #b5bdb1;
   }
 }
 
 .progress {
-  width: 100%;
+  border-radius: 2px;
+  width: 95%;
+  margin: 10px auto;
   height: 30px;
 
   .progress-bar {
+    border-radius: 2px;
     position: absolute;
     height: 30px;
     background: #f18969;
   }
 
   .progress-background {
+    border-radius: 2px;
     position: absolute;
-    width: 100%;
+    width: 95%;
     height: 30px;
     opacity: 0.5;
-    background: #bdbdbd;
+    background: #3bd188;
   }
 
   .progress-text {
     position: absolute;
-    width: 100%;
+    width: 95%;
     margin-top: 4px;
-    font-weight: 400;
     letter-spacing: 1px;
     color: #fff;
     opacity: 1;
   }
 
   .progress-current {
-    margin-left: 20px;
+    margin-left: 10px;
   }
 
   .progress-total {
     text-align: right;
-    margin-right: 20px;
+    margin-right: 10px;
   }
 }
 
 .controls {
-  background: #e8eef2;
+  background: #2c3536;
   width: 100%;
-  height: 55px;
-  border-bottom: 1px #ccc solid;
+  height: 57px;
 
   .icon {
     margin: 10px 10px 10px 0px;
@@ -141,4 +146,13 @@ input {
     margin-left: 20px;
     width: 200px;
   }
+}
+
+.header {
+  width: 100%;
+  background: #2c3536;
+  font-size: 1.5em;
+  letter-spacing: 1px;
+  padding: 10px;
+  color: #fefff5;
 }

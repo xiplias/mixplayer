@@ -6,7 +6,7 @@ Playlist = React.createClass({
     var items = Object.keys(this.props.mixes).map(function(mixKey) {
       var mix = that.props.mixes[mixKey];
 
-      return <MixItem mix={mix} onDoubleClick={that.props.onDoubleClick} onDelete={that.props.onDelete} key={mix.title} />;
+      return <MixItem mix={mix} currentMix={that.props.currentMix} onDoubleClick={that.props.onDoubleClick} onDelete={that.props.onDelete} key={mix.title} />;
     });
 
     return (
@@ -30,6 +30,7 @@ MixItem = React.createClass({
     return (
       <div className="playlistItem" onDoubleClick={this.handleDoubleClick}>
         {mix.title} <a href="#" onClick={this.handleDelete}>x</a>
+        <div className="playlistMixer">{mix.mixer}</div>
       </div>
     )
   }

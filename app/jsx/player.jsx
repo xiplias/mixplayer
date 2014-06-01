@@ -72,18 +72,14 @@ Progress = React.createClass({
 
 Info = React.createClass({
   render: function () {
-    if (this.props.mix) {
-      return (
-        <div className="info">
-          <div className="info-title">{this.props.mix.title}</div>
-          <div className="info-artist">{this.props.mix.mixer}</div>
-          <div className="info-track"></div>
-        </div>
-      );
-    } else {
-      return (
-        <div></div>
-      );
-    }
+    var mix = this.props.mix || {};
+
+    return (
+      <div className="info">
+        <div className="info-title">{mix.title}</div>
+        <div className="info-artist">{mix.mixer}</div>
+        <div className="info-track"></div>
+      </div>
+    );
   }
 })

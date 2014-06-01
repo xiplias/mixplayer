@@ -16,6 +16,7 @@
   "dependencies": {
     "open-sans-fontface": "~1.0.4",
     "soundmanager2": "https://raw.githubusercontent.com/scottschiller/SoundManager2/master/script/soundmanager2.js",
-    "react": "*"
+    "react": "*",
+    "basscss": "https://github.com/jxnblk/basscss/blob/master/basscss.css"
   }
 }
