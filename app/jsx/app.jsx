@@ -64,7 +64,7 @@ var MixPlayer = React.createClass({
 
     this.setState({currentMix: mix});
 
-    //soundManager.stopAll();
+    soundManager.stopAll();
 
     this.findSoundCloud(mix, function (err, url) {
       var sound = soundManager.createSound({
