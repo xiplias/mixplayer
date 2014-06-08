@@ -254,8 +254,8 @@ module.exports = function(grunt) {
         options: {
           repository: 'xiplias/mixplayer', // Path to repository
           auth: {
-            user: 'xiplias',
-            password: 'oxsb46gt'
+            user: '',
+            password: ''
           },
           release: {
             prerelease: true
