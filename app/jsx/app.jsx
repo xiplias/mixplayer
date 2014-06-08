@@ -20,7 +20,7 @@ var MixPlayer = React.createClass({
   },
   statePlayChange: function (state) {
     if (!this.state.sound) return;
-    console.log("state", state);
+
     if (state == "playing") {
       this.state.sound.pause();
     } else {

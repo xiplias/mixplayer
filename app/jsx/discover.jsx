@@ -45,10 +45,10 @@ MixUrlForm = React.createClass({
   render: function () {
     return (
       <div className="discoverSearch">
-        <div className="header">Search</div>
-        <form onSubmit={this.handleSubmit}>
-          <input onChange={this.onChange} value={this.state.url} placeholder="Search mixes" pattern=".{4,}" required title="4 characters minimum" style={{width: 350}}/>
-          <input type="submit" />
+        <div className="header"><div className="headerInner">Search</div></div>
+        <form onSubmit={this.handleSubmit} className="form form-light">
+          <input className="input" onChange={this.onChange} value={this.state.url} placeholder="Search by track, DJ, date" pattern=".{4,}" required title="4 characters minimum" style={{width: 350}}/>
+          <input type="submit" className="button" />
         </form>
       </div>
     );
