@@ -44,6 +44,8 @@ Scraper.fetchMix = function (url, callback) {
       });
     });
 
+    console.log(data);
+
     callback(null, data);
   });
 };
@@ -69,7 +71,7 @@ Scraper.fetchSearch = function (query, callback) {
         title: $(el).find(".tlLink a").text(),
         url: "http://www.1001tracklists.com" + $(el).find(".tlLink a").attr("href"),
         popularity: $(el).find("div.tlViewCount").text().trim(),
-        hasSoundCloud: $(el).find('.sprite-soundcloud_overlay').length === 1
+        hasSoundCloud: $(el).find('.sprite-soundcloud').length === 1
       });
     });
 
