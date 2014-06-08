@@ -22,9 +22,9 @@ request('https://s3-eu-west-1.amazonaws.com/mixplayer/versions.json', function (
             }
         });
 
-        updater.update(function(err){
-            if (!err) console.log('App has been updated!');
-        });
+        // updater.update(function(err){
+        //     if (!err) console.log('App has been updated!');
+        // });
       } catch (err) {
         console.log(err);
       }
