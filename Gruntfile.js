@@ -42,7 +42,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('prerelease', [
     'bumpup:prerelease',
-    'dist',
+    'build-app',
     'shell:compress_mac',
     'github-release:prerelease'
   ]);
